@@ -22,6 +22,13 @@ export default class Fish extends Drawable {
             y: 17,
         },
     }, {
+        name: 'smol',
+        probability: 1,
+        size: {
+            x: 13,
+            y: 9,
+        },
+    }, {
         name: 'jelly',
         probability: 0.6,
         size: {
