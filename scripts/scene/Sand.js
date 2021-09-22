@@ -34,7 +34,7 @@ export default class Sand extends Drawable {
         }
     }
 
-    resize() {
+    resize() { // TODO also respect resize-y
         for(const divEl of this.els) {
             divEl.style.width = `${this.tank.clientWidth}px`;
         }

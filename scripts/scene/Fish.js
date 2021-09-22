@@ -1,6 +1,10 @@
 import { randInt, random, randomCubicCenter } from "../util/Random.js";
 import Drawable from "./Drawable.js";
 
+// TODO periodic add/remove
+// TODO maintain fish-density after resize
+// TODO move into FishManager
+
 export default class Fish extends Drawable {
     static maxScale = 3;
     static types = [{

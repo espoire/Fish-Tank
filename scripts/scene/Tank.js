@@ -3,6 +3,7 @@ import Bubble from "./Bubble.js";
 import Sand from "./Sand.js";
 import { randInt } from "../util/Random.js";
 import { now } from "../util/Time.js";
+import Seaweed from "./Seaweed.js";
 
 export default class Tank {
     static fishDensity = 15 / (600 * 1000); // Z fish on a XxY viewport
@@ -13,6 +14,7 @@ export default class Tank {
             fishes: [],
             bubbles: [],
             sand: new Sand(),
+            seaweed: new Seaweed(),
         }
 
         const area = this.el.clientWidth * this.el.clientHeight;
@@ -25,6 +27,7 @@ export default class Tank {
         }
 
         this.elements.sand.addToTank(this.el);
+        this.elements.seaweed.addToTank(this.el);
 
         window.addEventListener('resize', this.onResize.bind(this));
         window.setInterval(this.update.bind(this), 1000);
