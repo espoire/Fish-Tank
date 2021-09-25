@@ -1,5 +1,5 @@
 1. Install npm (Node.js Package Manager)
-    Download and run the nvm (Node Version Manager) install script at https://github.com/nvm-sh/nvm/blob/v0.38.0/install.sh
+    Download and run the installer from https://nodejs.org/en/download/
 
 2. Install http-server
     Run npm install --global http-server

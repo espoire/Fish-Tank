@@ -1,17 +1,18 @@
 import Drawable from "./Drawable.js";
+import Horizon from "./Horizon.js";
 
 export default class Sand extends Drawable {
     static layers = [{
         color: '#C6A353',
-        height: 100,
+        height: 1.0,
         zIndex: 5,
     }, {
         color: '#DDC486',
-        height: 70,
+        height: 0.7,
         zIndex: 45,
     }, {
         color: '#F5E6B9',
-        height: 40,
+        height: 0.4,
         zIndex: 85,
     }]
 
@@ -22,12 +23,14 @@ export default class Sand extends Drawable {
             const divEl = document.createElement('div');
     
             divEl.style.backgroundColor = layer.color;
-            divEl.style.width = `${this.tank.clientWidth}px`;
-            divEl.style.height = `${layer.height}px`;
+            divEl.style.width = `${this.tank.size.x}px`;
+
+            const height = layer.height * Horizon.height;
+            divEl.style.height = `${height}px`;
     
             divEl.style.position = 'absolute';
             divEl.style.left = '0px';
-            divEl.style.top = `${this.tank.clientHeight - layer.height}px`;
+            divEl.style.top = `${this.tank.size.y - layer.height * Horizon.height}px`;
             divEl.style.zIndex = layer.zIndex;
     
             this.addEl(divEl);
@@ -36,7 +39,7 @@ export default class Sand extends Drawable {
 
     resize() { // TODO also respect resize-y
         for(const divEl of this.els) {
-            divEl.style.width = `${this.tank.clientWidth}px`;
+            divEl.style.width = `${this.tank.size.x}px`;
         }
     }
 }

@@ -31,8 +31,8 @@ export default class Bubble extends Drawable {
     getMaxPosition() {
         const size = this.getSize();
         return {
-            x: this.tank.clientWidth  - size.x - 1,
-            y: this.tank.clientHeight + size.y,
+            x: this.tank.size.x - size.x - 1,
+            y: this.tank.size.y + size.y,
         }
     }
 

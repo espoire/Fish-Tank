@@ -114,8 +114,8 @@ export default class Fish extends Drawable {
 
     getMaxPosition() {
         return {
-            x: this.tank.clientWidth  - this.type.size.x * this.scale - 1,
-            y: this.tank.clientHeight - this.type.size.y * this.scale - 1,
+            x: this.tank.size.x - this.type.size.x * this.scale - 1,
+            y: this.tank.size.y - this.type.size.y * this.scale - 1,
         }
     }
 

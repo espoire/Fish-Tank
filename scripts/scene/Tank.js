@@ -7,14 +7,20 @@ import Seaweed from "./Seaweed.js";
 
 export default class Tank {
     static fishDensity = 15 / (600 * 1000); // Z fish on a XxY viewport
+    static seaweedDensity = 5 / 600; // Z seaweeds on an X-wide viewport
 
     constructor(el) {
         this.el = el || document.body;
+        this.el.size = {
+            x: this.el.clientWidth,
+            y: this.el.clientHeight,
+        };
+
         this.elements = {
             fishes: [],
             bubbles: [],
             sand: new Sand(),
-            seaweed: new Seaweed(),
+            seaweeds: [],
         }
 
         const area = this.el.clientWidth * this.el.clientHeight;
@@ -26,8 +32,15 @@ export default class Tank {
             this.elements.fishes.push(fish);
         }
 
+        const numSeaweed = Math.max(this.el.clientWidth * Tank.seaweedDensity, 2);
+
+        for(let i = 0; i < numSeaweed; i++) {
+            const seaweed = new Seaweed();
+            seaweed.addToTank(this.el);
+            this.elements.seaweeds.push(seaweed);
+        }
+
         this.elements.sand.addToTank(this.el);
-        this.elements.seaweed.addToTank(this.el);
 
         window.addEventListener('resize', this.onResize.bind(this));
         window.setInterval(this.update.bind(this), 1000);
@@ -58,6 +71,11 @@ export default class Tank {
     }
 
     onResize() {
+        this.el.size = {
+            x: this.el.clientWidth,
+            y: this.el.clientHeight,
+        };
+
         for(const key in this.elements) {
             const value = this.elements[key];
             if(!value) continue;
