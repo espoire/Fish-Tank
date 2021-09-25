@@ -1,0 +1,13 @@
+1. Install npm (Node.js Package Manager)
+    Download and run the nvm (Node Version Manager) install script at https://github.com/nvm-sh/nvm/blob/v0.38.0/install.sh
+
+2. Install http-server
+    Run npm install --global http-server
+
+3. Run http-server
+    Use the included start-server.bat file, or run
+    http-server webpageDirectory -p portNumber
+    For example: http-server . -p 8000
+    
+4. View the page
+    Visit localhost:8000 in a browser.
